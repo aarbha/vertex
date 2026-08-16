@@ -1,0 +1,204 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-logo: "Cormorant Garamond", "Fraunces", serif;
+  --color-gold-300: #ffe066;
+  --color-gold-400: #fbbf24;
+  --color-gold-500: #f59e0b;
+  --color-gold-700: #b45309;
+  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  background-color: #000;
+  color: #f4f4f5; /* Zinc-100: Soft, elegant off-white instead of piercing white */
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: rgba(245, 158, 11, 0.35);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: #000;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(245, 158, 11, 0.35);
+  border-radius: 99px;
+  border: 2px solid #000;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(245, 158, 11, 0.6);
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Fraunces', 'Inter', sans-serif;
+  letter-spacing: -0.03em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Enhances readability across heterogeneous video frames (light and dark) */
+.text-shadow-ambient {
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.8), 0 1px 4px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Hero heading premium glow */
+.text-glow {
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.15), 0 2px 16px rgba(0, 0, 0, 0.8);
+}
+
+/* Premium Gold Button styling overriding standard liquid-glass background constraints */
+.gold-btn {
+  background: rgba(245, 158, 11, 0.12) !important;
+  border: 1.5px solid rgba(245, 158, 11, 0.35) !important;
+  color: #ffffff !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  position: relative;
+  overflow: hidden;
+  transition: all 400ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.gold-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(180deg, rgba(245, 158, 11, 0.5), rgba(245, 158, 11, 0.1));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.gold-btn:hover {
+  background: linear-gradient(135deg, #ffe066 0%, #f59e0b 50%, #b45309 100%) !important;
+  color: #000000 !important;
+  border-color: #ffe066 !important;
+  box-shadow: 0 0 25px rgba(245, 158, 11, 0.85), 0 4px 15px rgba(245, 158, 11, 0.4) !important;
+  text-shadow: none !important;
+  transform: translateY(-2px);
+}
+
+.liquid-glass {
+  background: rgba(0, 0, 0, 0.4);
+  background-blend-mode: luminosity;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: none;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+.liquid-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(180deg,
+    rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.1) 20%,
+    rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%,
+    rgba(255,255,255,0.1) 80%, rgba(255,255,255,0.3) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Premium glass panel with hover lift + gold border glow */
+.panel-glass {
+  transition: transform 500ms var(--ease-premium, cubic-bezier(0.16, 1, 0.3, 1)),
+              box-shadow 500ms var(--ease-premium, cubic-bezier(0.16, 1, 0.3, 1)),
+              border-color 500ms ease;
+}
+@media (hover: hover) {
+  .panel-glass:hover {
+    transform: translateY(-4px);
+    border-color: rgba(245, 158, 11, 0.35) !important;
+    box-shadow: 0 20px 60px -20px rgba(0, 0, 0, 0.8),
+                0 0 40px -10px rgba(245, 158, 11, 0.15),
+                inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Giant outlined background numerals for sections */
+.section-numeral {
+  font-family: 'Fraunces', 'Inter', sans-serif;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  background: linear-gradient(135deg, #b8860b, #ffd700, #b8860b, #fff5cc, #b8860b, #ffd700, #b8860b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 0;
+  text-stroke: 0;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Shine sweep for gold button hover */
+.gold-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(105deg, transparent 0%, rgba(255, 255, 255, 0.45) 50%, transparent 100%);
+  transform: skewX(-20deg);
+  transition: left 700ms var(--ease-premium, cubic-bezier(0.16, 1, 0.3, 1));
+  pointer-events: none;
+}
+.gold-btn:hover::after {
+  left: 130%;
+}
+
+/* Scroll-aware navbar state */
+.nav-scrolled {
+  background: rgba(0, 0, 0, 0.78) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.08);
+}
+
+/* Video entrance on page load */
+.video-enter {
+  animation: video-enter 1.4s var(--ease-premium, cubic-bezier(0.16, 1, 0.3, 1)) both;
+}
+@keyframes video-enter {
+  from { opacity: 0; transform: scale(1.05); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Film grain overlay */
+.grain-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  mix-blend-mode: overlay;
+}

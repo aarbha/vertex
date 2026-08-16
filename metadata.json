@@ -1,0 +1,6 @@
+{
+  "name": "VERTEX Green Space Planning",
+  "description": "AI-powered green space planning platform. Analyzes building layouts and recommends optimal green spaces for residential, commercial, industrial, and multi-unit structures with automated government documentation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
